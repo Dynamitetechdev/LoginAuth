@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./components/header";
+import Login from "./components/login";
+import Dashboard from "./components/dashboard";
+import { Outlet } from "react-router-dom";
+import useToken from "./useToken";
 
 function App() {
+  const [openMenu, setOpenMenu] = React.useState(false);
+
+  const { token, setToken } = useToken();
+  // const [token, setToken] = React.useState();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setOpenMenu={setOpenMenu} openMenu={openMenu} />
+      {!token ? <Login setToken={setToken} /> : <Outlet />}
     </div>
   );
 }
