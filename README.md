@@ -1,2 +1,2 @@
-# Live Link To Test LoginAuto:
+# Live Link To Test LoginAuth:
 loginauthsystem.netlify.app
